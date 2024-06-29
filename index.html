@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Help</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            overflow: hidden;
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+        #bouncingText {
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="bouncingText"></div>
+<audio id="entrada" src="audio/entrada.mp3"></audio>
+    <audio id="constante" src="audio/constante.mp3" loop></audio>
+     <script>
+        const texts = [
+            "Vos podés", "Te amo", "Seguí adelante", "Hermosa", "No te rindas", 
+            "Todo va a mejorar", "Te amo mucho", "Siempre a tu lado", "Sos invencible", 
+            "Ánimo mi vida", "Vos, mi victoria", "Sos fuerte", "Sos un amor", "Sos mejor", 
+            "Sos buena", "Vamos por más", "Respira profundo", "Anda a tomar agua", 
+            "Relájate mi amor", "Descansa", "¿Queres ir a dormir?", "Llamame..", "¿Estoy ocupado?", 
+            "Llamame..", "Tómate un descanso", "Llora si es necesario", "Te extraño..", 
+            "Te voy a secuestrar", "Oh, secuestradaaaa", "Haciendo tarea?", "Estoy orgulloso de vos", 
+            "Ya hablaste con alguien?", "Escribime...", "¿Queres venir?", "¿Precisas ayuda?", 
+            "Estoy para vos.", "Canje por un abrazo", "Canje por un beso", "I love u"
+        ];
+
+        let textIndex = 0;
+        const textElement = document.getElementById("bouncingText");
+
+        function showText() {
+            textElement.innerText = texts[textIndex];
+            textElement.style.top = Math.random() * 80 + "vh";
+            textElement.style.left = Math.random() * 80 + "vw";
+            textElement.style.opacity = 1;
+            setTimeout(() => {
+                textElement.style.opacity = 0;
+            }, 2500);
+            textIndex = (textIndex + 1) % texts.length;
+        }
+
+        showText();
+        setInterval(showText, 3000);
+    </script>
+</body>
+</html>
