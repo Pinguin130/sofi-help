@@ -28,9 +28,24 @@
 </head>
 <body>
     <div id="bouncingText"></div>
-<audio id="entrada" src="audio/entrada.mp3"></audio>
-    <audio id="constante" src="audio/constante.mp3" loop></audio>
+<audio id="entrada" src="inicioapp.mp3"></audio>
+    <audio id="constante" src="laguitarra.mp3" loop></audio>
      <script>
+document.addEventListener('deviceready', function () {
+    chcp.fetchUpdate(function (error, data) {
+        if (error) {
+            console.log('No update was found');
+        } else {
+            chcp.installUpdate(function (error) {
+                if (error) {
+                    console.error('Failed to install the update');
+                } else {
+                    console.log('Update installed');
+                }
+            });
+        }
+    });
+}, false);
         const texts = [
             "Vos podés", "Te amo", "Seguí adelante", "Hermosa", "No te rindas", 
             "Todo va a mejorar", "Te amo mucho", "Siempre a tu lado", "Sos invencible", 
